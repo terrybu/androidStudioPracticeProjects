@@ -31,7 +31,6 @@ public class MainActivity extends ActionBarActivity {
             //we get here and then send down in MyTHread run()
             @Override
             public void handleMessage(Message msg) {
-                this.obtainMessage();
                 progressBar.setProgress(msg.arg1);
             }
         };
