@@ -1,6 +1,7 @@
 package com.terrybu.android.sunshine;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -14,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -82,6 +84,19 @@ public class ForecastFragment extends Fragment {
 
         ListView listView = (ListView) rootView.findViewById(R.id.listview_forecast);
         listView.setAdapter(mForecastAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //Toast example to show how to use this oniTemClickListener
+                //basically didSelectRowForIndexPath
+//                String text = mForecastAdapter.getItem(position);
+//                Toast toast = Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT);
+//                toast.show();
+                Intent detailActivityIntent = new Intent(getActivity(), DetailActivity.class);
+                startActivity(detailActivityIntent);
+            }
+        });
 
         return rootView;
     }
